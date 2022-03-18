@@ -1,0 +1,45 @@
+{
+    "airlines": [{
+        "value": "AA",
+        "text": "Cebu Pacific"
+    }, {
+        "value": "DL",
+        "text": "Philippines Airlines"
+    }, {
+        "value": "UA",
+        "text": "Air Asia"
+    }],
+    "flight": [],
+    "filter": {
+        "airline":[],
+        "flight":[],
+        "bookingId":[],
+        "flightDate":null,
+        "passName":null
+    },
+    "table":{
+        "Carrid": "",
+        "Connid": "",
+        "Fldate": "",
+        "Bookid": "",
+        "Customid": "",
+        "Custtype": "",
+        "Smoker": "",
+        "Luggweight": "",
+        "Wunit": "",
+        "Invoice": null,
+        "Class": "",
+        "Forcuram": "",
+        "Forcurkey": "",
+        "Loccuram": "",
+        "Loccurkey": "",
+        "OrderDate": "",
+        "Counter": "",
+        "Agencynum": "",
+        "Cancelled": "",
+        "Reserved": "",
+        "Passname": "",
+        "Passform": "",
+        "Passbirth": null
+    }
+}

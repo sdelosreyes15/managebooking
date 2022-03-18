@@ -1,0 +1,98 @@
+<mvc:View controllerName="train.sdelosreyes.managebooking.controller.BookingDetails" xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns="sap.m" class="sapUiSizeCompact" displayBlock="true">
+    <Page title="Booking Details" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <f:SimpleForm layout="ColumnLayout" columnsM="2" columnsL="2" columnsXL="4" emptySpanL="1" emptySpanM="1">
+                <f:content>
+                    <core:Title text="Primary Details" />
+                    <Label text="{i18n>airline}" />
+                    <ComboBox required="true" items="{appData>/airlines}" selectedKey="{details>/Carrid}"
+                        id="cmbAirline">
+                        <items>
+                            <core:Item key="{appData>value}" text="{appData>text} ({appData>value})" />
+                        </items>
+                    </ComboBox>
+                    <Label text="{i18n>flightNumber}" />
+                    <ComboBox required="true" items="{appData>/flight}" selectedKey="{details>/Connid}" id="cmbFligt">
+                        <items>
+                            <core:Item key="{appData>}" text="{appData>}" />
+                        </items>
+                    </ComboBox>
+                    <Label text="{i18n>bookingNumber}" />
+                    <Input required="true" value="{details>/Bookid}" id="inpBook" maxLength="8" />
+                    <Label text="{i18n>flightDate}" />
+                    <DatePicker required="true" value="{details>/Fldate}" id="dpFlightdate" valueFormat="MM.dd.YYYY"
+                        displayFormat="MM.dd.YYYY" placeholder="MM.dd.YYYY" />
+                    <!--Second Column-->
+                    <core:Title text="Passenger Details" />
+                    <Label text="{i18n>passengerId}" />
+                    <Input maxLength="8" value="{details>/Customid}" />
+                    <Label text="{i18n>passenger}" />
+                    <Input value="{details>/Passname}" />
+                    <Label text="Passenger Birthday" />
+                    <DatePicker value="{details>/Passbirth}" valueFormat="MM.dd.YYYY" displayFormat="MM.dd.YYYY"
+                        placeholder="MM.dd.YYYY" />
+                    <Label text="Smoker" />
+                    <RadioButtonGroup id="rbSmoker" columns="2">
+                        <RadioButton text="Yes" />
+                        <RadioButton text="No" />
+                    </RadioButtonGroup>
+                    <!--Third Column-->
+                    <core:Title text="Financial Details" />
+                    <Label id="rbInvoice" text="Invoice" />
+                    <RadioButtonGroup columns="2">
+                        <RadioButton text="Yes" />
+                        <RadioButton text="No" />
+                    </RadioButtonGroup>
+                    <Label text="Foreign Currency" />
+                    <Input  value="{details>/Forcuram}" />
+                    <ComboBox selectedKey="{details>/Forcurkey}">
+                        <items>
+                            <core:Item key="USD" text="US Dollars" />
+                            <core:Item key="EUR" text="Euro" />
+                        </items>
+                        <layoutData>
+                            <f:ColumnElementData cellsSmall="3" cellsLarge="3" />
+                        </layoutData>
+                    </ComboBox>
+                    <Label text="Local Currency" />
+                    <Input  value="{details>/Loccuram}" />
+                    <ComboBox selectedKey="{details>/Loccurkey}">
+                        <items>
+                            <core:Item key="USD" text="US Dollars" />
+                            <core:Item key="EUR" text="Euro" />
+                        </items>
+                        <layoutData>
+                            <f:ColumnElementData cellsSmall="3" cellsLarge="3" />
+                        </layoutData>
+                    </ComboBox>
+                    <!--Third Column-->
+                    <core:Title text="Other Details" />
+                    <Label text="Luagge Weight" />
+                    <Input value="{details>/Luggweight}" />
+                    <ComboBox selectedKey="{details>/Wunit}">
+                        <items>
+                            <core:Item key="KG" text="Kilogram" />
+                            <core:Item key="ML" text="Milliliters" />
+                        </items>
+                        <layoutData>
+                            <f:ColumnElementData cellsSmall="3" cellsLarge="3" />
+                        </layoutData>
+                    </ComboBox>
+                    <Label text="Booking date" />
+                    <DatePicker value="{details>/OrderDate}" valueFormat="MM.dd.YYYY" displayFormat="MM.dd.YYYY"
+                        placeholder="MM.dd.YYYY" />
+                    <Label text="Sales office" />
+                    <Input maxLength="8" value="{details>/Agencynum}" />
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button text="{i18n>clear}" press="onClearForm" />
+                <Button text="{i18n>save}" type="Emphasized" press="onSaveBooking" />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:fb="sap.ui.comp.filterbar">
+    <fb:FilterBar reset="onReset" search="onSearchFlightList" useToolbar="false" showGoOnFB="true"
+        showFilterConfiguration="false" showClearOnFB="true" clear="onClearFilter">
+        <fb:filterGroupItems>
+            <fb:FilterGroupItem name="A" groupName="mainFilter" label="{i18n>airline}" visibleInFilterBar="true">
+                <fb:control>
+                    <MultiComboBox items="{appData>/airlines}" change="onChangeAirline" selectedKeys="{appData>/filter/airline}">
+                        <items>
+                            <core:Item key="{appData>value}" text="{appData>text} ({appData>value})"/>
+                        </items>
+                    </MultiComboBox>
+                </fb:control>
+            </fb:FilterGroupItem>
+            <fb:FilterGroupItem name="B" groupName="mainFilter" label="{i18n>flightNumber}" visibleInFilterBar="true">
+                <fb:control>
+                    <MultiComboBox items="{appData>/flight}" selectedKeys="{appData>/filter/flight}">
+                        <items>
+                            <core:Item key="{appData>}" text="{appData>}" />
+                        </items>
+                    </MultiComboBox>
+                </fb:control>
+            </fb:FilterGroupItem>
+            <fb:FilterGroupItem name="D" groupName="mainFilter" label="{i18n>flightDate}" visibleInFilterBar="true">
+                <fb:control>
+                    <DatePicker value="{appData>/filter/flightdate}"/>
+                </fb:control>
+            </fb:FilterGroupItem>
+             <fb:FilterGroupItem name="C" groupName="mainFilter" label="{i18n>bookingNumber}" visibleInFilterBar="true">
+                <fb:control>
+                    <Input value="{appData>/filter/bookingId}" maxLength="8"/>
+                </fb:control>
+            </fb:FilterGroupItem>
+            <fb:FilterGroupItem name="E" groupName="mainFilter" label="{i18n>passenger}" visibleInFilterBar="true">
+                <fb:control>
+                    <Input value="{appData>/filter/passName}" maxLength="25"/>
+                </fb:control>
+            </fb:FilterGroupItem>
+        </fb:filterGroupItems>
+    </fb:FilterBar>
+</core:FragmentDefinition>

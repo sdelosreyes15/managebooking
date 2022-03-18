@@ -1,0 +1,131 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "train.sdelosreyes.managebooking",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/zs_train_ui5_srv/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "appData": {
+                "uri": "model/appData.json",
+                "type": "JSON"
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.90.6",
+            "libs": {
+                "sap.ui.core": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "train.sdelosreyes.managebooking.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            },
+            "appData": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "appData"
+            }
+        },
+        "resources": {
+            "css": [{
+                "uri": "css/style.css"
+            }]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "train.sdelosreyes.managebooking.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false,
+                "transition": "slide"
+            },
+            "routes": [{
+                "name": "BookingList",
+                "pattern": "",
+                "target": [
+                    "BookingList"
+                ]
+                },{
+                    "name": "BookingDetails",
+                    "pattern": "bookingDetails/{action}/:airline:/:flight:/:date:/:bookid:",
+                    "target": [
+                        "BookingDetails"
+                    ]
+            }],
+            "targets": {
+                "TargetApp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "app",
+                    "viewName": "App"
+                },
+                "BookingList": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "BookingList",
+                    "viewName": "BookingList"
+                },
+                "BookingDetails": {
+                  
+                    "viewId": "bookingDetails",
+                    "viewName": "BookingDetails"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "train.sdelosreyes.managebooking.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

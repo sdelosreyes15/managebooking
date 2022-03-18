@@ -1,0 +1,89 @@
+<mvc:View controllerName="train.sdelosreyes.managebooking.controller.BookingList" xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:fb="sap.ui.comp.filterbar" displayBlock="true" xmlns="sap.m"
+    xmlns:table="sap.ui.table" class="sapUiSizeCompact">
+
+    <f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{i18n>appTitle}"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <!--Comments -->
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <f:content>
+                    <core:Fragment fragmentName="train.sdelosreyes.managebooking.view.fragment.FilterBar" type="XML" />
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <table:Table rows="{bookings>/}" selectionMode="None" visibleRowCount="14"
+                ariaLabelledBy="title" id="idBookingTbl">
+                <table:extension>
+                    <OverflowToolbar style="Clear">
+                        <Title class="customTitleWeight" id="title" text="{i18n>bookingList} ({appData>/filter/count})" />
+                    </OverflowToolbar>
+                </table:extension>
+                <table:columns>
+                    <table:Column width="5.5rem" hAlign="Center">
+                        <table:template>
+                            <FlexBox >
+                                <Button icon="sap-icon://edit" press="onPressEdit" class="sapUiTinyMarginEnd"/>
+                                <Button icon="sap-icon://delete" press="onPressDelete"/>
+                            </FlexBox>
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="12rem">
+                        <Label text="{i18n>airline} - {i18n>flightNumber}" />
+                        <table:template>
+                            <FlexBox justifyContent="SpaceBetween">
+                                <Label text="{bookings>Carrid}" design="Bold" />
+                                <Text text="{bookings>Connid}" />
+                            </FlexBox>
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="12rem" hAlign="End">
+                        <Label text="{i18n>bookingNumber}" />
+                        <table:template>
+                            <Text text="{bookings>Bookid}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="12rem" hAlign="End">
+                        <Label text="{i18n>flightDate}" />
+                        <table:template>
+                            <Text text="{ path: 'bookings>Fldate', formatter: '.formatter.formatDate'}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column hAlign="Center">
+                        <Label text="{i18n>passenger}" />
+                        <table:template>
+                            <FlexBox justifyContent="SpaceBetween">
+                                <Label text="{bookings>Passname}" design="Bold" />
+                                <Text text="{bookings>Customid}" />
+                            </FlexBox>
+
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="12rem" hAlign="End">
+                        <Label text="{i18n>amount}" />
+                        <table:template>
+                            <ObjectNumber textAlign="End" unit="{bookings>Loccurkey}"
+                                state="{ path: 'bookings>Loccuram', formatter: '.formatter.formatStateCurrency'}"
+                                number="{ path: 'bookings>Loccuram', formatter: '.formatter.formatCurrency'}" />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+            </table:Table>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <Button icon="sap-icon://question-mark" press="onPressAboutApp" />
+                <ToolbarSpacer />
+                <Button type="Accept" text="{i18n>newbooking}" press="onPressNew" />
+              
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>
